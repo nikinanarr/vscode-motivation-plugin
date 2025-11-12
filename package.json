@@ -1,0 +1,61 @@
+{
+  "name": "vscode-motivation-plugin",
+  "displayName": "Motivation Plugin",
+  "description": "Милый мотиватор для разработчика: похвала за код, сохранения, фокус и успехи.",
+  "version": "0.0.1",
+  "publisher": "Nikitosik",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*",
+    "onCommand:motivation.showStats"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "motivation.showStats",
+        "title": "Motivation: Show Session Stats"
+      }
+    ],
+    "configuration": {
+      "title": "Motivation Plugin",
+      "properties": {
+        "motivation.charThreshold": {
+          "type": "number",
+          "default": 100,
+          "description": "Сколько символов нужно набрать до следующего мотивационного сообщения."
+        },
+        "motivation.idleMinutes": {
+          "type": "number",
+          "default": 5,
+          "description": "Через сколько минут бездействия считать, что был простой."
+        },
+        "motivation.focusMinutes": {
+          "type": "number",
+          "default": 20,
+          "description": "Сколько минут непрерывной работы считать фокус-сессией."
+        },
+        "motivation.enableTerminalSuccessPraise": {
+          "type": "boolean",
+          "default": true,
+          "description": "Показывать похвалу при успешных запусках в терминале (по тексту вывода)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.5.0"
+  }
+}
